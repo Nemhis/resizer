@@ -122,6 +122,8 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    'resize_mode' => 'Resize mode should be fit',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

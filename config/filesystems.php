@@ -29,6 +29,10 @@ return [
     */
 
     'disks' => [
+        'upload' => [
+            'driver' => 'local',
+            'root' => storage_path(env('UPLOAD_PATH', 'upload')),
+        ],
 
         'local' => [
             'driver' => 'local',
@@ -67,7 +71,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('upload') => storage_path('upload'),
     ],
 
 ];
