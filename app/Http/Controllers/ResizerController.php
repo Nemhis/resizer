@@ -13,8 +13,24 @@ class ResizerController extends Controller
         $params = collect($request->validated());
         $width = (int) $params->get('width');
         $height = (int) $params->get('height');
-//        $mode = $params->get('mode', 'fit');
+        $mode = $params->get('mode', 'fit');
 
-            return Image::make(Storage::disk('upload')->path($fileName))->fit($width, $height)->response();
+        $path = Storage::disk('upload')->path($fileName);
+
+
+        $resized = Image::cache(function($image) use ($path, $width, $height, $mode) {
+            $img = $image->make($path);
+
+            if ($mode === 'fit') {
+                $img = $img->fit($width, $height);
+            } else {
+                $img = $img->resize($width, $height);
+            }
+
+            return $img;
+        }, 43200, true);
+
+
+        return $resized->response();
     }
 }
