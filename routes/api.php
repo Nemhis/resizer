@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/resize/{fileName}', '\App\Http\Controllers\ResizerController@resize')->name('resizer.resize');
+Route::get('/resize/{fileName}', '\App\Http\Controllers\ResizerController@resize')->name('resizer.resize')->where('fileName', '(.*)');

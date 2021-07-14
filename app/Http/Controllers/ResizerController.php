@@ -17,7 +17,6 @@ class ResizerController extends Controller
 
         $path = Storage::disk('upload')->path($fileName);
 
-
         $resized = Image::cache(function($image) use ($path, $width, $height, $mode) {
             $img = $image->make($path);
 
